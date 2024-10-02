@@ -17,7 +17,9 @@ def get_training_crime():
 
 # Returns a cleaned dataset sourced from the COVID-FN and COVID-FNIR datasets.
 def get_training_health():
-    df = pd.DataFrame()
+    df1 = pd.read_csv("../data/COVID19-FNIR/fakeNews.csv")[['Link', 'text', 'Binary Label']] #Covid-FNIR
+    df2 = pd.read_csv("../data/COVID19-FNIR/trueNews.csv")[['Link', 'text', 'Binary Label']] #Covid-FNIR
+    df = pd.concat([df1, df2], ignore_index=True)
     return df
 
 # Returns a cleaned dataset sourced from the FakeNews, ISOT, and LIAR datasets.
@@ -27,7 +29,7 @@ def get_training_politics():
     df2 = pd.read_csv("../data/ISOT Fake.csv")[['title', 'text', 'subject']] #ISOT
     df3 = pd.read_csv("../data/training/FakeNews/train.csv")[['title', 'text', 'label']] #FakeNews
     # TODO: LIAR dataset
-    df4 = pd.read_json("../data/liar/train/dataset_info.json")[['label', 'id', 'subject']] #LIAR
+    df4 = pd.read_json("../data/liar/train/dataset_info.json")[['label', 'statement', 'subject']] #LIAR
     # Adding an 'is_true' column
     df1['is_true'] = 1
     df2['is_true'] = 0
@@ -36,6 +38,7 @@ def get_training_politics():
     # Renaming columns
     df = df.rename(columns={'subject': 'category'})
     df3 = df3.rename(columns={'label': 'is_true'})
+    #df4 = df4.rename(columns={'': ''})
     # Ensuring there aren't any missing / improper values for the rows
     df = df.dropna(subset=['title', 'text', 'is_true'])
     df = df[(df['title'] != "") & (df['text'] != "") & (df['is_true'] != "")]
@@ -54,7 +57,7 @@ def get_training_politics():
 # TODO: Climate is a .parquet file, which has had trouble interacting with pandas. Might need a new download?
 # Returns a cleaned dataset sourced from the Climate dataset.
 def get_training_science():
-    df = pd.DataFrame()
+    df = pd.read_parquet("../data/training/Climate.parquet") #Climate data
     return df
 
 # TODO: GossipCop dataset only has article titles, no text

@@ -21,4 +21,4 @@ This project is supervised by Professor Mohammad Alnabhan as part of the CSI 490
 
 ## Notes
 
-Currently the only raw data that hasn't been uploaded to the repository is COVID-FNIR, LIAR, and Pheme. Everything else is available
+Currently the only raw data that hasn't been uploaded to the repository is Pheme. Everything else is available

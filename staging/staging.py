@@ -27,6 +27,7 @@ def get_training_politics():
     df2 = pd.read_csv("../data/ISOT Fake.csv")[['title', 'text', 'subject']] #ISOT
     df3 = pd.read_csv("../data/training/FakeNews/train.csv")[['title', 'text', 'label']] #FakeNews
     # TODO: LIAR dataset
+    df4 = pd.read_json("../data/liar/train/dataset_info.json")[['label', 'id', 'subject']] #LIAR
     # Adding an 'is_true' column
     df1['is_true'] = 1
     df2['is_true'] = 0

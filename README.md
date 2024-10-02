@@ -7,7 +7,7 @@ This repository is dedicated to our honors project for CSI 4900: **Machine/Deep 
 ## Participants
 
 - **Cole Stevens** - 300171413
-- **Mikaela Dobie** - 300174392
+- **Mikaela Dobie** - 300164161
 - **William Beaupre** - 300174392
 
 ## Timeline

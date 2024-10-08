@@ -1,0 +1,3 @@
+Download from this link, and the dataset is the folder named "all-rnr-annotated-threads":
+
+https://figshare.com/articles/dataset/PHEME_dataset_for_Rumour_Detection_and_Veracity_Classification/6392078

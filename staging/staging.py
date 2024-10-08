@@ -140,7 +140,22 @@ def get_testing_health():
 
 # Returns a cleaned dataset sourced from the PHEME and PolitiFact datasets.
 def get_testing_politics():
-    df = pd.DataFrame()
+    # Reading the dataset and only extracting the useful columns
+    df2 = pd.read_csv("../data/training/Politifact.csv")
+    df1 = pd.read_csv("../data/testing/Pheme_output.csv")[['text', 'target', 'event']]
+    df2 = df2[['page_is_first_citation_phase1', 'article_title_phase1', 'article_categories_phase1']]
+    # Renaming columns
+    df2 = df2.rename(columns={'page_is_first_citation_phase1': 'is_true', 'article_title_phase1': 'text'})
+    df1 = df1.rename(columns={'target': 'is_true'})
+    # Filtering entries to only include Crime articles, and dropping the category column
+    df1 = df1[df1['event'].str.contains('charliehebdo-all-rnr-threads' | 'ottawashooting-all-rnr-threads' | 'ferguson-all-rnr-threads' |
+                                         'sydneysiege-all-rnr-threads' | 'russian-ukrainian-crisis-all-rnr-threads' | 'germanwings-crash-all-rnr-threads', case=False, na=False)]
+    df1 = df1.drop(columns=['event'])
+    # Combining the dataframes
+    df = pd.concat([df1, df2], ignore_index=True)
+    # Ensuring there aren't any missing / improper values for the rows
+    df = stage_df(df, df.columns.tolist())
+
     return df
 
 

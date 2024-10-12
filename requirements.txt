@@ -1,6 +1,9 @@
-PyYAML
-jinja2
-tiktoken
-pydantic
-pandas
-datasets
+PyYAML,
+jinja2,
+tiktoken,
+pydantic,
+pandas,
+datasets,
+protobuff
+transformers
+sentencepiece

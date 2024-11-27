@@ -41,7 +41,7 @@ def get_training_health():
     df2 = pd.read_csv("../raw_data/training/COVID-FNIR-Fake.csv")[['Text', 'Binary Label']] #Covid-FNIR
     df3 = pd.read_csv("../raw_data/training/COVID-FN.csv")[['text', 'label']]
     # Renaming columns
-    df1 = df1.rename(columns={'Text': 'text', 'Binary Label': 'is_true'})
+    df1 = df1.rename(columns={'Text': 'text', 'Label': 'is_true'})
     df2 = df2.rename(columns={'Text': 'text', 'Binary Label': 'is_true'})
     df3 = df3.rename(columns={'label': 'is_true'})
     # Combining the dataframes

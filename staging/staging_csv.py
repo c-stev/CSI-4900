@@ -15,10 +15,8 @@ dataframes = {
 }
 
 # Creating a 'clean data' directory if it doesn't already exist
-#os.makedirs('../clean_data/', exist_ok=True)
+os.makedirs('../clean_data/', exist_ok=True)
 
 # Creating a .csv based off of every dataframe in dataframes
-#for name, df in dataframes.items():
-#    df.to_csv(f"../clean_data/{name}.csv", index=False)
-
-print(dataframes['training_health'].head())
+for name, df in dataframes.items():
+    df.to_csv(f"../clean_data/{name}.csv", index=False)
